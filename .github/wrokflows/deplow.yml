@@ -1,4 +1,4 @@
-name: Deploy Django application to hostinger
+name: Deploy Django application
 
 on:
   push:
@@ -8,17 +8,17 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-step:
-  - name: Checkout Code
-    uses: actions/checkout@v4
-
-  - name: Devloploy Via ssh
-    uses: appleboy/ssh-action@v1.0.3
-    with:
-      host: ${{ secrets.SSH_HOST }}
-      username: ${{ secrets.SSH_USERNAME }}
-      key: ${{ secrets.SSH_KEY }}
-      script: 
-        cd Django-first/
-        git pull
+      - name: SSH and Update Server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd ~/Django-first/
+            git pull origin main
+            source .venv/bin/activate
