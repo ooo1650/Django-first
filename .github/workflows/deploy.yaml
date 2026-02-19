@@ -1,4 +1,4 @@
-name: Deploy Django application
+name: Deploy to Render
 
 on:
   push:
@@ -12,13 +12,18 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: SSH and Update Server
-        uses: appleboy/ssh-action@v1.0.3
+      - name: Trigger Render Deployment
+        uses: johnbeynon/render-deploy-action@v0.0.8
         with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_KEY }}
-          script: |
-            cd ~/Django-first/
-            git pull origin main
-            source .venv/bin/activate
+          service-id: ${{ secrets.RENDER_SERVICE_ID }}
+          api-key: ${{ secrets.RENDER_API_KEY }}
+      # - name: SSH and Update Server
+      #   uses: appleboy/ssh-action@v1.0.3
+      #   with:
+      #     host: ${{ secrets.SSH_HOST }}
+      #     username: ${{ secrets.SSH_USERNAME }}
+      #     key: ${{ secrets.SSH_KEY }}
+      #     script: |
+      #       cd ~/Django-first/
+      #       git pull origin main
+      #       source .venv/bin/activate
