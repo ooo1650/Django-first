@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ibhn_$qzldsor+k*nv0a0y3=j%uz&$3al#$z5efyoh+@_(f$w&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# DEBUG = False
 
 ALLOWED_HOSTS = ['https://www.google.com/search?q=django-first-lku3.onrender.com', 'localhost', '127.0.0.1']
 
