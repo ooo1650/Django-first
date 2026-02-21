@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ibhn_$qzldsor+k*nv0a0y3=j%uz&$3al#$z5efyoh+@_(f$w&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://www.google.com/url?sa=E&source=gmail&q=django-first-lku3.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['https://www.google.com/search?q=django-first-lku3.onrender.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'playground',
-    'debug_toolbar',
+    # 'debug_toolbar',
     'store',
     'tags',
 ]
@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
+    # "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = 'storefront.urls'
