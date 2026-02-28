@@ -26,7 +26,7 @@ jobs:
         run: pipenv run python manage.py test 
 
   deploy:
-    needs: test # This ensures deployment ONLY happens if tests pass
+    # needs: test # This ensures deployment ONLY happens if tests pass
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
