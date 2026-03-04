@@ -25,48 +25,15 @@ jobs:
         # Note: We use 'pipenv run' because 'shell' is interactive and will hang the build
         run: pipenv run python manage.py test 
 
-  test1:
+  deploy:
+    # needs: test # This ensures deployment ONLY happens if tests pass
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Trigger Render Deployment
+        uses: johnbeynon/render-deploy-action@v0.0.8
         with:
-          python-version: '3.10'
-
-      - name: Install Pipenv and Dependencies
-        run: |
-          pip install pipenv
-          pipenv install --dev  # Installs your packages from Pipfile
-
-      - name: Run Tests
-        # Note: We use 'pipenv run' because 'shell' is interactive and will hang the build
-        run: pipenv run python manage.py test 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  # deploy:
-  #   # needs: test # This ensures deployment ONLY happens if tests pass
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout Code
-  #       uses: actions/checkout@v4
-
-  #     - name: Trigger Render Deployment
-  #       uses: johnbeynon/render-deploy-action@v0.0.8
-  #       with:
-  #         service-id: ${{ secrets.RENDER_SERVICE_ID }}
-  #         api-key: ${{ secrets.RENDER_API_KEY }}
+          service-id: ${{ secrets.RENDER_SERVICE_ID }}
+          api-key: ${{ secrets.RENDER_API_KEY }}
