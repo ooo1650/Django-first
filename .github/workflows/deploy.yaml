@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  test3.13:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -25,7 +25,7 @@ jobs:
         # Note: We use 'pipenv run' because 'shell' is interactive and will hang the build
         run: pipenv run python manage.py test 
 
-  test2.90:
+  test1:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
